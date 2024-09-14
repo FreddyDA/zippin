@@ -1,0 +1,31 @@
+version: "3"
+services:
+    web:
+        image: ${IMAGE_APP}
+        env_file:
+            - .env
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/php/custom-www.conf:/usr/local/etc/php-fpm.d/custom-www.conf
+        container_name: ${SERVICE_NAME_APP}
+        networks:
+            - buroPE
+    nginx:
+        image: nginx:alpine
+        env_file:
+            - .env
+        container_name: ${SERVICE_NAME_NGINX}
+        restart: unless-stopped
+        ports:
+            - ${PORT}:80
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/nginx:/etc/nginx/conf.d/
+        networks:
+            - buroPE
+
+networks:
+    buroPE:
+        external: true
+        driver: bridge

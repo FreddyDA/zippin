@@ -1,0 +1,1778 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Ordenes",
+        "description": "Documentación de la API para gestionar órdenes.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Ordenes"
+                ],
+                "summary": "Obtener una orden por ID",
+                "description": "Retorna los detalles de una orden específica.",
+                "operationId": "f088d34a2737782215f435f854e31de5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la orden",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Orden obtenida exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Orden obtenida, orden numero: 22"
+                                                        },
+                                                        "body": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 22
+                                                                },
+                                                                "total": {
+                                                                    "type": "string",
+                                                                    "example": "29.35"
+                                                                },
+                                                                "status": {
+                                                                    "type": "string",
+                                                                    "example": "processing"
+                                                                },
+                                                                "currency": {
+                                                                    "type": "string",
+                                                                    "example": "USD"
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T13:15:05.000000Z"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T13:15:05.000000Z"
+                                                                },
+                                                                "customer_id": {
+                                                                    "type": "integer",
+                                                                    "example": 25
+                                                                },
+                                                                "shipping_address_id": {
+                                                                    "type": "integer",
+                                                                    "example": 44
+                                                                },
+                                                                "billing_address_id": {
+                                                                    "type": "integer",
+                                                                    "example": 43
+                                                                },
+                                                                "customer": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 25
+                                                                        },
+                                                                        "first_name": {
+                                                                            "type": "string",
+                                                                            "example": "John"
+                                                                        },
+                                                                        "last_name": {
+                                                                            "type": "string",
+                                                                            "example": "Doe"
+                                                                        },
+                                                                        "email": {
+                                                                            "type": "string",
+                                                                            "example": "john.doe@example.com"
+                                                                        },
+                                                                        "number_phone": {
+                                                                            "type": "string",
+                                                                            "example": "(555) 555-5555"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "billing_address": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 43
+                                                                        },
+                                                                        "address_1": {
+                                                                            "type": "string",
+                                                                            "example": "969 Market"
+                                                                        },
+                                                                        "address_2": {
+                                                                            "type": "string",
+                                                                            "example": null
+                                                                        },
+                                                                        "city": {
+                                                                            "type": "string",
+                                                                            "example": "San Francisco"
+                                                                        },
+                                                                        "state": {
+                                                                            "type": "string",
+                                                                            "example": "CA"
+                                                                        },
+                                                                        "postcode": {
+                                                                            "type": "string",
+                                                                            "example": "94103"
+                                                                        },
+                                                                        "country": {
+                                                                            "type": "string",
+                                                                            "example": "US"
+                                                                        },
+                                                                        "type": {
+                                                                            "type": "string",
+                                                                            "example": "billing"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "customer_id": {
+                                                                            "type": "integer",
+                                                                            "example": 25
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "shipping_address": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 44
+                                                                        },
+                                                                        "address_1": {
+                                                                            "type": "string",
+                                                                            "example": "969 Market"
+                                                                        },
+                                                                        "address_2": {
+                                                                            "type": "string",
+                                                                            "example": null
+                                                                        },
+                                                                        "city": {
+                                                                            "type": "string",
+                                                                            "example": "San Francisco"
+                                                                        },
+                                                                        "state": {
+                                                                            "type": "string",
+                                                                            "example": "CA"
+                                                                        },
+                                                                        "postcode": {
+                                                                            "type": "string",
+                                                                            "example": "94103"
+                                                                        },
+                                                                        "country": {
+                                                                            "type": "string",
+                                                                            "example": "US"
+                                                                        },
+                                                                        "type": {
+                                                                            "type": "string",
+                                                                            "example": "shipping"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "customer_id": {
+                                                                            "type": "integer",
+                                                                            "example": 25
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "order_items": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "integer",
+                                                                                "example": 14
+                                                                            },
+                                                                            "quantity": {
+                                                                                "type": "integer",
+                                                                                "example": 2
+                                                                            },
+                                                                            "order_id": {
+                                                                                "type": "integer",
+                                                                                "example": 22
+                                                                            },
+                                                                            "product_id": {
+                                                                                "type": "integer",
+                                                                                "example": 93
+                                                                            },
+                                                                            "product": {
+                                                                                "properties": {
+                                                                                    "id": {
+                                                                                        "type": "integer",
+                                                                                        "example": 93
+                                                                                    },
+                                                                                    "name": {
+                                                                                        "type": "string",
+                                                                                        "example": "Producto 1"
+                                                                                    },
+                                                                                    "price": {
+                                                                                        "type": "string",
+                                                                                        "example": "100.00"
+                                                                                    },
+                                                                                    "category": {
+                                                                                        "type": "string",
+                                                                                        "example": "Categoría 1"
+                                                                                    },
+                                                                                    "quantity": {
+                                                                                        "type": "integer",
+                                                                                        "example": 2
+                                                                                    },
+                                                                                    "created_at": {
+                                                                                        "type": "string",
+                                                                                        "format": "date-time",
+                                                                                        "example": "2024-09-10T10:29:44.000000Z"
+                                                                                    },
+                                                                                    "updated_at": {
+                                                                                        "type": "string",
+                                                                                        "format": "date-time",
+                                                                                        "example": "2024-09-11T13:15:05.000000Z"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    }
+                                                                },
+                                                                "payment": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 5
+                                                                        },
+                                                                        "method": {
+                                                                            "type": "string",
+                                                                            "example": "bacs"
+                                                                        },
+                                                                        "transaction_id": {
+                                                                            "type": "integer",
+                                                                            "example": 123
+                                                                        },
+                                                                        "date_paid": {
+                                                                            "type": "string",
+                                                                            "example": "2017-03-22 16:28:08"
+                                                                        },
+                                                                        "order_id": {
+                                                                            "type": "integer",
+                                                                            "example": 22
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "shipping": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 4
+                                                                        },
+                                                                        "method": {
+                                                                            "type": "string",
+                                                                            "example": "Flat Rate"
+                                                                        },
+                                                                        "total": {
+                                                                            "type": "string",
+                                                                            "example": "10.00"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "example": null
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "example": null
+                                                                        },
+                                                                        "id_order": {
+                                                                            "type": "integer",
+                                                                            "example": 22
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al obtener la orden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 500
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Ocurrio un error al obtener la orden: error_message"
+                                                        },
+                                                        "body": {
+                                                            "type": "null",
+                                                            "example": null
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders": {
+            "post": {
+                "tags": [
+                    "Ordenes"
+                ],
+                "summary": "Registrar una nueva orden",
+                "description": "Crea una nueva orden en el sistema.",
+                "operationId": "248c3c8e12acb4e5d83607285ea6be6c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 727
+                                    },
+                                    "number": {
+                                        "type": "string",
+                                        "example": "727"
+                                    },
+                                    "order_key": {
+                                        "type": "string",
+                                        "example": "order_58d2d042d1d"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "processing"
+                                    },
+                                    "currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                    },
+                                    "date_created": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2017-03-22T16:28:02"
+                                    },
+                                    "date_modified": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2017-03-22T16:28:08"
+                                    },
+                                    "discount_total": {
+                                        "type": "string",
+                                        "example": "0.00"
+                                    },
+                                    "discount_tax": {
+                                        "type": "string",
+                                        "example": "0.00"
+                                    },
+                                    "shipping_total": {
+                                        "type": "string",
+                                        "example": "10.00"
+                                    },
+                                    "shipping_tax": {
+                                        "type": "string",
+                                        "example": "0.00"
+                                    },
+                                    "cart_tax": {
+                                        "type": "string",
+                                        "example": "1.35"
+                                    },
+                                    "total": {
+                                        "type": "string",
+                                        "example": "29.35"
+                                    },
+                                    "billing": {
+                                        "properties": {
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "John"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Doe"
+                                            },
+                                            "company": {
+                                                "type": "string",
+                                                "example": ""
+                                            },
+                                            "address_1": {
+                                                "type": "string",
+                                                "example": "969 Market"
+                                            },
+                                            "address_2": {
+                                                "type": "string",
+                                                "example": ""
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "example": "San Francisco"
+                                            },
+                                            "state": {
+                                                "type": "string",
+                                                "example": "CA"
+                                            },
+                                            "postcode": {
+                                                "type": "string",
+                                                "example": "94103"
+                                            },
+                                            "country": {
+                                                "type": "string",
+                                                "example": "US"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "john.doe@example.com"
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "example": "(555) 555-5555"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "shipping": {
+                                        "properties": {
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "John"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Doe"
+                                            },
+                                            "company": {
+                                                "type": "string",
+                                                "example": ""
+                                            },
+                                            "address_1": {
+                                                "type": "string",
+                                                "example": "969 Market"
+                                            },
+                                            "address_2": {
+                                                "type": "string",
+                                                "example": ""
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "example": "San Francisco"
+                                            },
+                                            "state": {
+                                                "type": "string",
+                                                "example": "CA"
+                                            },
+                                            "postcode": {
+                                                "type": "string",
+                                                "example": "94103"
+                                            },
+                                            "country": {
+                                                "type": "string",
+                                                "example": "US"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "payment_method": {
+                                        "type": "string",
+                                        "example": "bacs"
+                                    },
+                                    "payment_method_title": {
+                                        "type": "string",
+                                        "example": "Direct Bank Transfer"
+                                    },
+                                    "transaction_id": {
+                                        "type": "string",
+                                        "example": "123"
+                                    },
+                                    "date_paid": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2017-03-22T16:28:08"
+                                    },
+                                    "date_paid_gmt": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2017-03-22T19:28:08"
+                                    },
+                                    "date_completed": {
+                                        "type": "string",
+                                        "example": null
+                                    },
+                                    "date_completed_gmt": {
+                                        "type": "string",
+                                        "example": null
+                                    },
+                                    "cart_hash": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "line_items": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 315
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Woo Single #1"
+                                                },
+                                                "product_id": {
+                                                    "type": "integer",
+                                                    "example": 93
+                                                },
+                                                "variation_id": {
+                                                    "type": "integer",
+                                                    "example": 0
+                                                },
+                                                "quantity": {
+                                                    "type": "integer",
+                                                    "example": 2
+                                                },
+                                                "tax_class": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "subtotal": {
+                                                    "type": "string",
+                                                    "example": "6.00"
+                                                },
+                                                "subtotal_tax": {
+                                                    "type": "string",
+                                                    "example": "0.45"
+                                                },
+                                                "total": {
+                                                    "type": "string",
+                                                    "example": "6.00"
+                                                },
+                                                "total_tax": {
+                                                    "type": "string",
+                                                    "example": "0.45"
+                                                },
+                                                "taxes": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 75
+                                                            },
+                                                            "total": {
+                                                                "type": "string",
+                                                                "example": "0.45"
+                                                            },
+                                                            "subtotal": {
+                                                                "type": "string",
+                                                                "example": "0.45"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "meta_data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "sku": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "price": {
+                                                    "type": "integer",
+                                                    "example": 3
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "shipping_lines": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 317
+                                                },
+                                                "method_title": {
+                                                    "type": "string",
+                                                    "example": "Flat Rate"
+                                                },
+                                                "method_id": {
+                                                    "type": "string",
+                                                    "example": "flat_rate"
+                                                },
+                                                "total": {
+                                                    "type": "string",
+                                                    "example": "10.00"
+                                                },
+                                                "total_tax": {
+                                                    "type": "string",
+                                                    "example": "0.00"
+                                                },
+                                                "taxes": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "meta_data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Orden creada satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Orden creada satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "integer",
+                                                            "example": 27
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al crear la orden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 500
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Ocurrio un error al crear la orden"
+                                                        },
+                                                        "body": {
+                                                            "type": "null",
+                                                            "example": null
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{id}/status": {
+            "put": {
+                "tags": [
+                    "Ordenes"
+                ],
+                "summary": "Actualizar el estado de una orden",
+                "operationId": "6a231b52c094f88ac06ae10d7dc81dcb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la orden",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "pending",
+                                            "processing",
+                                            "completed",
+                                            "cancelled"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Estado actualizado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "body": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "No autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Obtener todos los productos",
+                "operationId": "c1ff6f862214e1896c59cfe0491ce0e8",
+                "responses": {
+                    "200": {
+                        "description": "Lista de productos obtenida satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Productos obtenidos satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "integer",
+                                                                        "example": 1
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "example": "Producto 1"
+                                                                    },
+                                                                    "price": {
+                                                                        "type": "number",
+                                                                        "format": "float",
+                                                                        "example": 23.4
+                                                                    },
+                                                                    "category": {
+                                                                        "type": "string",
+                                                                        "example": "shoe"
+                                                                    },
+                                                                    "quantity": {
+                                                                        "type": "integer",
+                                                                        "example": 5
+                                                                    },
+                                                                    "created_at": {
+                                                                        "type": "string",
+                                                                        "format": "date-time",
+                                                                        "example": "2024-09-11T20:48:45.000000Z"
+                                                                    },
+                                                                    "updated_at": {
+                                                                        "type": "string",
+                                                                        "format": "date-time",
+                                                                        "example": "2024-09-11T20:48:45.000000Z"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Solicitud inválida"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Crear un nuevo producto",
+                "operationId": "399770d33fa4672f1216707d0e236763",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "test"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 23.4
+                                    },
+                                    "category": {
+                                        "type": "string",
+                                        "example": "shoe"
+                                    },
+                                    "quantity": {
+                                        "type": "integer",
+                                        "example": 5
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Producto creado satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Producto creado satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "integer",
+                                                            "example": 319
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Solicitud inválida"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Obtener un producto por ID",
+                "operationId": "b46f4aa73232d0368eee698a082342a4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Producto obtenido satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Producto obtenido satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 1
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Producto 1"
+                                                                },
+                                                                "price": {
+                                                                    "type": "number",
+                                                                    "format": "float",
+                                                                    "example": 23.4
+                                                                },
+                                                                "category": {
+                                                                    "type": "string",
+                                                                    "example": "shoe"
+                                                                },
+                                                                "quantity": {
+                                                                    "type": "integer",
+                                                                    "example": 5
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T20:48:45.000000Z"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T20:48:45.000000Z"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Producto no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Eliminar un producto",
+                "operationId": "fe34b364a3f192305598b65d04d06b5d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Producto eliminado satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Producto eliminado satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "boolean",
+                                                            "example": true
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Producto no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Actualizar un producto",
+                "operationId": "cd5746566cbd37ef36175b7e840f6e28",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Probando de nuevo"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 23.4
+                                    },
+                                    "category": {
+                                        "type": "string",
+                                        "example": "shoe"
+                                    },
+                                    "quantity": {
+                                        "type": "integer",
+                                        "example": 5
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Producto modificado satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Producto modificado satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "integer",
+                                                            "example": 319
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Solicitud inválida"
+                    },
+                    "404": {
+                        "description": "Producto no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Obtener todos los usuarios",
+                "operationId": "7e2f5799553ec93c9c43e2a58490d447",
+                "responses": {
+                    "200": {
+                        "description": "Usuarios obtenidos satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Usuarios obtenidos satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "integer",
+                                                                        "example": 1
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "example": "test"
+                                                                    },
+                                                                    "email": {
+                                                                        "type": "string",
+                                                                        "example": "test@gmail.com"
+                                                                    },
+                                                                    "email_verified_at": {
+                                                                        "type": "string",
+                                                                        "format": "date-time",
+                                                                        "example": null,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "password": {
+                                                                        "type": "string",
+                                                                        "example": "$2y$10$3Z"
+                                                                    },
+                                                                    "role": {
+                                                                        "type": "string",
+                                                                        "example": "admin"
+                                                                    },
+                                                                    "remember_token": {
+                                                                        "type": "string",
+                                                                        "example": null,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "created_at": {
+                                                                        "type": "string",
+                                                                        "format": "date-time",
+                                                                        "example": "2024-09-11T20:48:45.000000Z"
+                                                                    },
+                                                                    "updated_at": {
+                                                                        "type": "string",
+                                                                        "format": "date-time",
+                                                                        "example": "2024-09-11T20:48:45.000000Z"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        },
+        "/register": {
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Registrar un nuevo usuario",
+                "operationId": "f1fde7f4a932e393f6042d1b92e65b0a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "test"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "test@zippin.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "minLength": 8,
+                                        "example": "test12345678"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "minLength": 8,
+                                        "example": "test12345678"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "example": "user"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario creado satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Usuario creado satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "integer",
+                                                            "example": 3
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Solicitud inválida"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Obtener un usuario por ID",
+                "operationId": "910a0c7cf580e1c605648d82a4e57f46",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario obtenido satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Usuario obtenido satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 2
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Freddy Diaz"
+                                                                },
+                                                                "email": {
+                                                                    "type": "string",
+                                                                    "example": "diazfa6@gmail.com"
+                                                                },
+                                                                "email_verified_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": null,
+                                                                    "nullable": true
+                                                                },
+                                                                "password": {
+                                                                    "type": "string",
+                                                                    "example": "$2y$12$RJiBvCAX4aMJpGSbt5W8T.Dh4KE5i0QIx/MhP5CeEywe8PqjdvXmm"
+                                                                },
+                                                                "role": {
+                                                                    "type": "string",
+                                                                    "example": "admin"
+                                                                },
+                                                                "remember_token": {
+                                                                    "type": "string",
+                                                                    "example": null,
+                                                                    "nullable": true
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T20:48:45.000000Z"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T20:48:45.000000Z"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuario no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Eliminar un usuario",
+                "operationId": "43dd20becb1f47444e484cbb18ce345c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario eliminado satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Usuario eliminado satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "boolean",
+                                                            "example": true
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuario no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Actualizar un usuario",
+                "operationId": "6055962f27a3fb88a3445c27693dcf5f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "test upddate"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "test@zippin.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "minLength": 8,
+                                        "example": "test1234567"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "minLength": 8,
+                                        "example": "test1234567"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "example": "user"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario actualizado satisfactoriamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Usuario actualizado satisfactoriamente"
+                                                        },
+                                                        "body": {
+                                                            "type": "integer",
+                                                            "example": 3
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Solicitud inválida"
+                    },
+                    "404": {
+                        "description": "Usuario no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Product": {
+                "title": "Product",
+                "required": [
+                    "name",
+                    "price"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID del producto",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nombre del producto",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "Precio del producto",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "category": {
+                        "description": "Categoria del producto",
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "description": "Cantidad del producto",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Ordenes",
+            "description": "Ordenes"
+        },
+        {
+            "name": "Productos",
+            "description": "Productos"
+        },
+        {
+            "name": "Usuarios",
+            "description": "Usuarios"
+        }
+    ]
+}

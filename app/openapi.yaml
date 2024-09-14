@@ -1,0 +1,161 @@
+openapi: 3.0.0
+info:
+  title: API de Ordenes
+  description: Documentación de la API para gestionar órdenes.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000/api
+paths:
+  /orders/{id}/status:
+    put:
+      summary: Actualizar el estado de una orden
+      tags:
+        - Ordenes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la orden
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [pending, processing, completed, cancelled]
+              required:
+                - status
+      responses:
+        '200':
+          description: Estado actualizado correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  body:
+                    type: object
+        '403':
+          description: No autorizado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /orders:
+    get:
+      summary: Obtener todas las órdenes
+      tags:
+        - Ordenes
+      responses:
+        '200':
+          description: Lista de órdenes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    status:
+                      type: string
+                    created_at:
+                      type: string
+                      format: date-time
+                    updated_at:
+                      type: string
+                      format: date-time
+  /orders/{id}:
+    get:
+      summary: Obtener una orden por ID
+      tags:
+        - Ordenes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la orden
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles de la orden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  status:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+        '404':
+          description: Orden no encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /orders:
+    post:
+      summary: Crear una nueva orden
+      tags:
+        - Ordenes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [pending, processing, completed, cancelled]
+              required:
+                - status
+      responses:
+        '201':
+          description: Orden creada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  status:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+        '400':
+          description: Error en la solicitud
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
