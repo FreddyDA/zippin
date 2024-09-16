@@ -23,7 +23,7 @@ class Order
         return $result;
     }
 
-    public function find($id)
+    public function find(Int $id)
     {
         $result = $this->orderRepository->getById($id);
         
@@ -35,7 +35,7 @@ class Order
         return $result;
     }
 
-    public function changeStatus($status, $id)
+    public function changeStatus(String $status, Int $id)
     {
         $param = array(
             'status' => $status
@@ -45,9 +45,45 @@ class Order
 
     }
 
-    public function validate($id)
+    public function validate(Int $id)
     {
         return $this->orderRepository->validate($id);
+    }
+
+    public function findProducts(Int $id)
+    {
+        $result = $this->orderRepository->getProductsById($id);
+        
+        if (!isset($result['id'])) {
+            
+            $result = "Orden no encontrada con ID: $id";
+        }
+
+        return $result;
+    }
+
+    public function findShipping(Int $id)
+    {
+        $result = $this->orderRepository->getShippingById($id);
+        
+        if (!isset($result['id'])) {
+            
+            $result = "Orden no encontrada con ID: $id";
+        }
+
+        return $result;
+    }
+
+    public function findPayment($id)
+    {
+        $result = $this->orderRepository->getPaymentById($id);
+        
+        if (!isset($result['id'])) {
+            
+            $result = "Orden no encontrada con ID: $id";
+        }
+
+        return $result;
     }
 
 }

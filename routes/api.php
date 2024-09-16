@@ -54,6 +54,12 @@ Route::group(['middleware' => ['auth.jwt']], function () {
     Route::post('/orders/register', [OrderController::class, 'register']);
     // Ruta para actualizar una orden existente
     Route::patch('/orders/{id}', [OrderController::class, 'updateStatus'])->middleware('check.numeric.id');
+    // Ruta para obtener los produtos de una orden específica por ID
+    Route::get('/orders/products/{id}', [OrderController::class, 'showProducts'])->middleware('check.numeric.id');
+    // Ruta para obtener detalle del envio de una orden específica por ID
+    Route::get('/orders/shipping/{id}', [OrderController::class, 'showShipping'])->middleware('check.numeric.id');
+    // Ruta para obtener detalle del pago de una orden específica por ID
+    Route::get('/orders/payment/{id}', [OrderController::class, 'showPayment'])->middleware('check.numeric.id');
 
     /***************PRODUCT*********************/
     // Ruta para consultar todos los productos

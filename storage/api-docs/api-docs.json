@@ -862,6 +862,662 @@
                 }
             }
         },
+        "/orders/{id}/products": {
+            "get": {
+                "tags": [
+                    "Ordenes"
+                ],
+                "summary": "Mostrar productos de una orden",
+                "description": "Obtiene los productos de una orden por ID",
+                "operationId": "c9aa80746647f87c91da76308e8d0d9d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la orden",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Orden obtenida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Orden obtenida, orden numero: 22"
+                                                        },
+                                                        "body": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 22
+                                                                },
+                                                                "total": {
+                                                                    "type": "string",
+                                                                    "example": "29.35"
+                                                                },
+                                                                "status": {
+                                                                    "type": "string",
+                                                                    "example": "pending"
+                                                                },
+                                                                "currency": {
+                                                                    "type": "string",
+                                                                    "example": "USD"
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T13:15:05.000000Z"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-13T13:13:33.000000Z"
+                                                                },
+                                                                "customer_id": {
+                                                                    "type": "integer",
+                                                                    "example": 25
+                                                                },
+                                                                "shipping_address_id": {
+                                                                    "type": "integer",
+                                                                    "example": 44
+                                                                },
+                                                                "billing_address_id": {
+                                                                    "type": "integer",
+                                                                    "example": 43
+                                                                },
+                                                                "order_items": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "integer",
+                                                                                "example": 14
+                                                                            },
+                                                                            "quantity": {
+                                                                                "type": "integer",
+                                                                                "example": 2
+                                                                            },
+                                                                            "order_id": {
+                                                                                "type": "integer",
+                                                                                "example": 22
+                                                                            },
+                                                                            "product_id": {
+                                                                                "type": "integer",
+                                                                                "example": 93
+                                                                            },
+                                                                            "product": {
+                                                                                "properties": {
+                                                                                    "id": {
+                                                                                        "type": "integer",
+                                                                                        "example": 93
+                                                                                    },
+                                                                                    "name": {
+                                                                                        "type": "string",
+                                                                                        "example": "Producto 1"
+                                                                                    },
+                                                                                    "price": {
+                                                                                        "type": "string",
+                                                                                        "example": "100.00"
+                                                                                    },
+                                                                                    "category": {
+                                                                                        "type": "string",
+                                                                                        "example": "Categoría 1"
+                                                                                    },
+                                                                                    "quantity": {
+                                                                                        "type": "integer",
+                                                                                        "example": -10
+                                                                                    },
+                                                                                    "created_at": {
+                                                                                        "type": "string",
+                                                                                        "format": "date-time",
+                                                                                        "example": "2024-09-10T10:29:44.000000Z"
+                                                                                    },
+                                                                                    "updated_at": {
+                                                                                        "type": "string",
+                                                                                        "format": "date-time",
+                                                                                        "example": "2024-09-14T18:37:51.000000Z"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al obtener la orden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 500
+                                                },
+                                                "response": {
+                                                    "type": "string",
+                                                    "example": "Ocurrio un error al obtener la orden: {error}"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{id}/shipping": {
+            "get": {
+                "tags": [
+                    "Ordenes"
+                ],
+                "summary": "Mostrar información de envío de una orden",
+                "description": "Obtiene la información de envío de una orden por ID",
+                "operationId": "498fa5adc1311a218c6915e9eea51b20",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la orden",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Orden obtenida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Orden obtenida, orden numero: 22"
+                                                        },
+                                                        "body": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 22
+                                                                },
+                                                                "total": {
+                                                                    "type": "string",
+                                                                    "example": "29.35"
+                                                                },
+                                                                "status": {
+                                                                    "type": "string",
+                                                                    "example": "pending"
+                                                                },
+                                                                "currency": {
+                                                                    "type": "string",
+                                                                    "example": "USD"
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T13:15:05.000000Z"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-13T13:13:33.000000Z"
+                                                                },
+                                                                "customer_id": {
+                                                                    "type": "integer",
+                                                                    "example": 25
+                                                                },
+                                                                "shipping_address_id": {
+                                                                    "type": "integer",
+                                                                    "example": 44
+                                                                },
+                                                                "billing_address_id": {
+                                                                    "type": "integer",
+                                                                    "example": 43
+                                                                },
+                                                                "customer": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 25
+                                                                        },
+                                                                        "first_name": {
+                                                                            "type": "string",
+                                                                            "example": "John"
+                                                                        },
+                                                                        "last_name": {
+                                                                            "type": "string",
+                                                                            "example": "Doe"
+                                                                        },
+                                                                        "email": {
+                                                                            "type": "string",
+                                                                            "example": "f_d-16@hotmail.com"
+                                                                        },
+                                                                        "number_phone": {
+                                                                            "type": "string",
+                                                                            "example": "(555) 555-5555"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "shipping_address": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 44
+                                                                        },
+                                                                        "address_1": {
+                                                                            "type": "string",
+                                                                            "example": "969 Market"
+                                                                        },
+                                                                        "address_2": {
+                                                                            "type": "string",
+                                                                            "example": null
+                                                                        },
+                                                                        "city": {
+                                                                            "type": "string",
+                                                                            "example": "San Francisco"
+                                                                        },
+                                                                        "state": {
+                                                                            "type": "string",
+                                                                            "example": "CA"
+                                                                        },
+                                                                        "postcode": {
+                                                                            "type": "string",
+                                                                            "example": "94103"
+                                                                        },
+                                                                        "country": {
+                                                                            "type": "string",
+                                                                            "example": "US"
+                                                                        },
+                                                                        "type": {
+                                                                            "type": "string",
+                                                                            "example": "shipping"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "customer_id": {
+                                                                            "type": "integer",
+                                                                            "example": 25
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "shipping": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 4
+                                                                        },
+                                                                        "method": {
+                                                                            "type": "string",
+                                                                            "example": "Flat Rate"
+                                                                        },
+                                                                        "total": {
+                                                                            "type": "string",
+                                                                            "example": "10.00"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": null
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": null
+                                                                        },
+                                                                        "id_order": {
+                                                                            "type": "integer",
+                                                                            "example": 22
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al obtener la orden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 500
+                                                },
+                                                "response": {
+                                                    "type": "string",
+                                                    "example": "Ocurrio un error al obtener la orden: {error}"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{id}/payment": {
+            "get": {
+                "tags": [
+                    "Ordenes"
+                ],
+                "summary": "Mostrar información de pago de una orden",
+                "description": "Obtiene la información de pago de una orden por ID",
+                "operationId": "5ef6d5d412d267042b95950179ab2505",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la orden",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Orden obtenida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 200
+                                                },
+                                                "response": {
+                                                    "properties": {
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Orden obtenida, orden numero: 22"
+                                                        },
+                                                        "body": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 22
+                                                                },
+                                                                "total": {
+                                                                    "type": "string",
+                                                                    "example": "29.35"
+                                                                },
+                                                                "status": {
+                                                                    "type": "string",
+                                                                    "example": "pending"
+                                                                },
+                                                                "currency": {
+                                                                    "type": "string",
+                                                                    "example": "USD"
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-11T13:15:05.000000Z"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string",
+                                                                    "format": "date-time",
+                                                                    "example": "2024-09-13T13:13:33.000000Z"
+                                                                },
+                                                                "customer_id": {
+                                                                    "type": "integer",
+                                                                    "example": 25
+                                                                },
+                                                                "shipping_address_id": {
+                                                                    "type": "integer",
+                                                                    "example": 44
+                                                                },
+                                                                "billing_address_id": {
+                                                                    "type": "integer",
+                                                                    "example": 43
+                                                                },
+                                                                "customer": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 25
+                                                                        },
+                                                                        "first_name": {
+                                                                            "type": "string",
+                                                                            "example": "John"
+                                                                        },
+                                                                        "last_name": {
+                                                                            "type": "string",
+                                                                            "example": "Doe"
+                                                                        },
+                                                                        "email": {
+                                                                            "type": "string",
+                                                                            "example": "f_d-16@hotmail.com"
+                                                                        },
+                                                                        "number_phone": {
+                                                                            "type": "string",
+                                                                            "example": "(555) 555-5555"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "shipping_address": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 44
+                                                                        },
+                                                                        "address_1": {
+                                                                            "type": "string",
+                                                                            "example": "969 Market"
+                                                                        },
+                                                                        "address_2": {
+                                                                            "type": "string",
+                                                                            "example": null
+                                                                        },
+                                                                        "city": {
+                                                                            "type": "string",
+                                                                            "example": "San Francisco"
+                                                                        },
+                                                                        "state": {
+                                                                            "type": "string",
+                                                                            "example": "CA"
+                                                                        },
+                                                                        "postcode": {
+                                                                            "type": "string",
+                                                                            "example": "94103"
+                                                                        },
+                                                                        "country": {
+                                                                            "type": "string",
+                                                                            "example": "US"
+                                                                        },
+                                                                        "type": {
+                                                                            "type": "string",
+                                                                            "example": "shipping"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": "2024-09-11T12:47:37.000000Z"
+                                                                        },
+                                                                        "customer_id": {
+                                                                            "type": "integer",
+                                                                            "example": 25
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "shipping": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 4
+                                                                        },
+                                                                        "method": {
+                                                                            "type": "string",
+                                                                            "example": "Flat Rate"
+                                                                        },
+                                                                        "total": {
+                                                                            "type": "string",
+                                                                            "example": "10.00"
+                                                                        },
+                                                                        "created_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": null
+                                                                        },
+                                                                        "updated_at": {
+                                                                            "type": "string",
+                                                                            "format": "date-time",
+                                                                            "example": null
+                                                                        },
+                                                                        "id_order": {
+                                                                            "type": "integer",
+                                                                            "example": 22
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al obtener la orden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 500
+                                                },
+                                                "response": {
+                                                    "type": "string",
+                                                    "example": "Ocurrio un error al obtener la orden: {error}"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/products": {
             "get": {
                 "tags": [
